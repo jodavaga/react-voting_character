@@ -1,0 +1,22 @@
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo {
+    width: 200px;
+    height: 40px;
+    border: 1px solid gray;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+
+    li {
+        padding: 10px;
+    }
+}
