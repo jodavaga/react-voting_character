@@ -1,11 +1,13 @@
 import React from 'react';
 
+import CardBanner from '../card-banner/CardBanner';
+
 import './Header.scss'
 
 class Header extends React.Component {
     render() {
         return(
-            <div>
+            <div className="header-container">
                 <header>
                     <div className="logo"><img src="" alt=""/></div>
                     <div>
@@ -17,6 +19,10 @@ class Header extends React.Component {
                         </ul>
                     </div>
                 </header>
+
+                <section className="container">
+                    <CardBanner />
+                </section>
             </div>
         )
     }

@@ -1,0 +1,22 @@
+@import '../../assets/scss/variables';
+
+.card-banner {
+    width: 50%;
+}
+
+.card-container {
+    padding: 20px;
+
+    h1 {
+        margin: 0; 
+    }
+
+}
+
+.footer-buttons {
+    display: flex;
+
+    .btn {
+        width: 50%;
+    }
+}

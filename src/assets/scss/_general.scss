@@ -1,0 +1,39 @@
+.container {
+    padding: 0 10%;
+}
+
+// Typografy
+h1 {
+    font-size: 3em;
+    color: $white-color;
+}
+
+// Buttons
+.btn {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+
+    svg{
+        color: $white-color
+    }
+}
+
+.btn-like {
+    background-color: $main-color;
+}
+
+.btn-dislike {
+    background-color: $second-color;
+}
+
+.btn-outline {
+    border: 1px solid $white-color;
+    background-color: none;
+}
+
+// Cards
+
+.card {
+    background-color: $card-background;
+}
