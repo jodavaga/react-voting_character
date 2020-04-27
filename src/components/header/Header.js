@@ -1,5 +1,7 @@
 import React from 'react';
 
+import logo from '../../assets/images/rule-logo.png';
+
 import CardBanner from '../card-banner/CardBanner';
 
 import './Header.scss'
@@ -9,7 +11,7 @@ class Header extends React.Component {
         return(
             <div className="header-container">
                 <header>
-                    <div className="logo"><img src="" alt=""/></div>
+                    <div className="logo"><img src={logo} alt=""/></div>
                     <div>
                         <ul className="main-menu">
                             <li><a href="">Past Trials</a></li>

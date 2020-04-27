@@ -1,5 +1,6 @@
 .header-container {
-    background-image: url('../../assets/images/close-up.jpg');
+    background-image: url('../../assets/images/pope-francis.jpg');
+    padding-bottom: 150px;
 }
 
 header {
@@ -7,12 +8,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 40px;
 }
 
 .logo {
     width: 200px;
     height: 40px;
-    border: 1px solid gray;
 }
 
 .main-menu {

@@ -19,6 +19,10 @@ class CardVote extends Component {
         return percentageArray;
     }
 
+    voteSelected = () => {
+        
+    }
+
     roundPercentageToDisplay = ( num ): Number => {
         const rounded = Math.round(num * 10) / 10;
         return rounded;
@@ -26,7 +30,7 @@ class CardVote extends Component {
     
     render() {
 
-        const imgUrl = require('../../assets/images/'+'kanye-west'+'.jpg');
+        const imgUrl = require('../../assets/images/'+this.props.item.img+'.jpg');
 
         const backgroundStyle = {
             backgroundImage: "url("+ imgUrl +")"
@@ -43,7 +47,7 @@ class CardVote extends Component {
                     <p>{this.props.item.description}</p>
                     <div className="button-vote">
                         <button 
-                            className="btn btn-like"
+                            className="btn btn-like selected"
                             onClick={(event) => this.props.handleVote(this.props.item.id, event.currentTarget.classList[1])}
                         >
                             <ThumbUpIcon />

@@ -19,6 +19,13 @@ h1 {
     }
 }
 
+.selected {
+    border: 2px solid $white-color;
+    &:focus {
+        outline-style: none;
+    }
+}
+
 .btn-like {
     background-color: $main-color;
 }
