@@ -18,6 +18,7 @@ class CardVote extends Component {
         }
     }
 
+    // Convert to display percentage data
     getPercentages = (likes, dislikes) => {
         const totalVotes = likes + dislikes;
 
@@ -29,6 +30,7 @@ class CardVote extends Component {
         return percentageArray;
     }
 
+    // Selecciona un boton para votar
     voteSelected = (event) => {
         const target = event.currentTarget
         
@@ -46,6 +48,7 @@ class CardVote extends Component {
         }, 200);
     }
 
+    // 
     addSelectedClass(target) {
         
         if (target.classList[1] === 'btn-like') {
@@ -61,9 +64,10 @@ class CardVote extends Component {
         } 
     }
 
-    removeSelectedClass(elements) {
-        const buttons = document.getElementsByClassName(elements);
-             const myArray = Array.from(buttons);
+    removeSelectedClass(element) {
+        const button = document.querySelectorAll(`.${element}`);
+        // button.classList.remove('selected');
+             const myArray = Array.from(button);
              myArray.forEach(elem => {
                  elem.classList.remove('selected');
              });
@@ -107,7 +111,7 @@ class CardVote extends Component {
                         </button>
 
                         <button 
-                            onClick={(event) => this.props.handleVote(this.props.item.id, event.currentTarget.classList[1])}
+                            onClick={(event) => this.props.handleVote(this.props.item.id, this.state.button.classList[1])}
                             className="btn btn-outline">
                             Vote now
                         </button>
