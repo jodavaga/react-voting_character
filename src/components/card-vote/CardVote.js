@@ -8,7 +8,17 @@ import './CardVote.scss';
 
 class CardVote extends Component {
 
-    getPercentages = (likes, dislikes): Array => {
+    constructor() {
+        super();
+        this.state = {
+            selected: false,
+            button: '',
+            inProgress: false,
+            complete: false
+        }
+    }
+
+    getPercentages = (likes, dislikes) => {
         const totalVotes = likes + dislikes;
 
         const likePercentage = (likes*100)/totalVotes;
@@ -19,11 +29,47 @@ class CardVote extends Component {
         return percentageArray;
     }
 
-    voteSelected = () => {
+    voteSelected = (event) => {
+        const target = event.currentTarget
         
+        
+        this.setState((prevState) => {
+            return {
+                selected: !prevState.selected,
+                button: target,
+                inProgress: true
+            }
+        });
+        
+        setTimeout(() => {
+            this.addSelectedClass(target);
+        }, 200);
     }
 
-    roundPercentageToDisplay = ( num ): Number => {
+    addSelectedClass(target) {
+        
+        if (target.classList[1] === 'btn-like') {
+             target.classList.add('selected');
+             
+             this.removeSelectedClass('dislike');
+        } 
+            
+        if (target.classList[1] === 'btn-dislike') {
+            target.classList.add('selected');
+
+            this.removeSelectedClass('like');
+        } 
+    }
+
+    removeSelectedClass(elements) {
+        const buttons = document.getElementsByClassName(elements);
+             const myArray = Array.from(buttons);
+             myArray.forEach(elem => {
+                 elem.classList.remove('selected');
+             });
+    }
+
+    roundPercentageToDisplay = ( num ) => {
         const rounded = Math.round(num * 10) / 10;
         return rounded;
     }
@@ -47,20 +93,22 @@ class CardVote extends Component {
                     <p>{this.props.item.description}</p>
                     <div className="button-vote">
                         <button 
-                            className="btn btn-like selected"
-                            onClick={(event) => this.props.handleVote(this.props.item.id, event.currentTarget.classList[1])}
+                            className="btn btn-like like"
+                            onClick={(event) => this.voteSelected(event)}
                         >
                             <ThumbUpIcon />
                         </button>
 
                         <button 
-                            className="btn btn-dislike"
-                            onClick={(event) => this.props.handleVote(this.props.item.id, event.currentTarget.classList[1])}
+                            className="btn btn-dislike dislike"
+                            onClick={(event) => this.voteSelected(event)}
                         >
                             <ThumbDownAltIcon />
                         </button>
 
-                        <button className="btn btn-outline">
+                        <button 
+                            onClick={(event) => this.props.handleVote(this.props.item.id, event.currentTarget.classList[1])}
+                            className="btn btn-outline">
                             Vote now
                         </button>
 
