@@ -13,7 +13,7 @@ class CardVote extends Component {
         this.state = {
             selected: false,
             button: '',
-            inProgress: false,
+            inProgress: true,
             complete: false
         }
     }
@@ -30,14 +30,29 @@ class CardVote extends Component {
         return percentageArray;
     }
 
+    toggleVote = (event) => {
+        if (this.state.inProgress && this.state.selected) {
+            this.props.handleVote(this.props.item.id, this.state.button.classList[1]);
+        }
+
+        this.setState(prevState => {
+            return {
+                inProgress: !prevState.inProgress,
+                button: '',
+                selected: false
+            }
+        });
+        
+    }
+
     // Selecciona un boton para votar
     voteSelected = (event) => {
         const target = event.currentTarget
         
         
-        this.setState((prevState) => {
+        this.setState(() => {
             return {
-                selected: !prevState.selected,
+                selected: true,
                 button: target,
                 inProgress: true
             }
@@ -89,44 +104,53 @@ class CardVote extends Component {
         const _likes = this.getPercentages(this.props.item.likes, this.props.item.dislikes)[0];
         const _dislikes = this.getPercentages(this.props.item.likes, this.props.item.dislikes)[1];
 
+
+        const onVoteElement = <div className="buttons-onvote">
+                            <button 
+                                className="btn btn-like like"
+                                onClick={(event) => this.voteSelected(event)}
+                            >
+                                <ThumbUpIcon />
+                            </button>
+
+                            <button 
+                                className="btn btn-dislike dislike"
+                                onClick={(event) => this.voteSelected(event)}
+                            >
+                                <ThumbDownAltIcon />
+                            </button>
+
+                            <button 
+                                disabled={!this.state.selected}
+                                onClick={this.toggleVote}
+                                className="btn btn-outline">
+                                Vote now
+                            </button>
+                        </div>;
+
+            const voteAgainButton = <button 
+                                        className="btn btn-outline"
+                                        onClick={this.toggleVote}>Vote again</button>
+
         return (
             <div className="card card-vote" style={backgroundStyle}>
                 <div className="card-container">
-                    <h1>{this.props.item.character}?</h1>
+                    <h1>{this.props.item.character}</h1>
                     <small><strong>{this.props.item.date}</strong> in {this.props.item.category}</small>
-                    <p>{this.props.item.description}</p>
-                    <div className="button-vote">
-                        <button 
-                            className="btn btn-like like"
-                            onClick={(event) => this.voteSelected(event)}
-                        >
-                            <ThumbUpIcon />
-                        </button>
-
-                        <button 
-                            className="btn btn-dislike dislike"
-                            onClick={(event) => this.voteSelected(event)}
-                        >
-                            <ThumbDownAltIcon />
-                        </button>
-
-                        <button 
-                            onClick={(event) => this.props.handleVote(this.props.item.id, this.state.button.classList[1])}
-                            className="btn btn-outline">
-                            Vote now
-                        </button>
-
+                    <p>{this.state.inProgress ? this.props.item.description : 'Thank You for Voting!'}</p>
+                    <div className="onvote-container">
+                         { this.state.inProgress ? onVoteElement : voteAgainButton} 
                     </div>
                 </div>
                 <div className="votes-buttons">
                     <button className="btn btn-like" style={{'width': _likes+'%'}}>
-                        <span className="btn-vote">
+                        <span className="voting-progress like">
                             <ThumbUpIcon />
                             <span>{this.roundPercentageToDisplay(_likes)}%</span>
                         </span>
                     </button>
                     <button className="btn btn-dislike" style={{'width': _dislikes+'%'}}>
-                        <span className="btn-vote">
+                        <span className="voting-progress dislike">
                             <span>{this.roundPercentageToDisplay(_dislikes)}%</span>
                             <ThumbDownAltIcon />
                         </span>

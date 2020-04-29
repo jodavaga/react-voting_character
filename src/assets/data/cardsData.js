@@ -28,6 +28,16 @@ const cardsData = [
         likes: 36,
         dislikes: 64,
         img: 'cristina-fernandez-de-kishner'
+    },
+    {
+        id: 4,
+        character: "Malala Yousafzai",
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices dapibus interdum. Sed nec vehicula ex.',
+        category: 'Entertaiment',
+        date: '2 month ago',
+        likes: 64,
+        dislikes: 36,
+        img: 'malala-yousafzai'
     }
 ]
 
