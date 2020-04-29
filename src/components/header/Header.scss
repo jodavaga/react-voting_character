@@ -1,3 +1,5 @@
+@import '../../assets/scss/variables';
+
 .header-container {
     background-image: url('../../assets/images/pope-francis.jpg');
     padding-bottom: 150px;
@@ -20,8 +22,14 @@ header {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    font-size: 1.5em;
+    color: $white-color;
 
     li {
         padding: 10px;
+    }
+
+    a {
+        text-decoration: none;
     }
 }

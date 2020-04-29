@@ -1,0 +1,35 @@
+@import '../../assets/scss/variables';
+
+.caption-banner-container {
+    background-color: $light-gray-color;
+    color: $gray-color;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px 30px;
+    border-radius: 3px;
+}
+
+.strong-quote {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+
+    span {
+        font-size: 1.2em;
+        width: 100%;
+    }
+
+    strong {
+        width: 100%;
+        font-size: 2em;
+    }
+}
+
+.description {
+    box-sizing: border-box;
+}
+
+.close {
+    margin-left: 30px;
+}

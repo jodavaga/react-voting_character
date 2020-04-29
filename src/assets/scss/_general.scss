@@ -1,8 +1,22 @@
+// General
+
+a {
+    color: $white-color;
+}
+
 .container {
     padding: 0 10%;
+    color: $white-color;
 }
 
 // Typografy
+
+.section-title {
+    color: $gray-color;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
 h1 {
     font-size: 3em;
     color: $white-color;

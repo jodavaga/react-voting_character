@@ -13,6 +13,7 @@ class Votes extends Component {
         }
     }
 
+    // Get updted data from local storage if exist
     componentWillMount() {
         if (localStorage.getItem('data')) {
             console.log('data already exist');
@@ -22,13 +23,12 @@ class Votes extends Component {
                 prevState.cards = actualData
             });
         }
-
     }
 
+    // update data on localstorage
     componentDidUpdate() {
         const dataJson = JSON.stringify(this.state.cards);
         console.warn('Updated!', dataJson);
-        // set data on localstorage
         localStorage.setItem('data', dataJson);
 
     }
@@ -62,8 +62,11 @@ class Votes extends Component {
             />);
 
         return (
-            <div className="votes-container">
-                {cards}
+            <div>
+                <div className="section-title">Votes</div>
+                <div className="votes-container">
+                    {cards}
+                </div>
             </div>
         )
     }
